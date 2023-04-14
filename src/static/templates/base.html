@@ -4,7 +4,20 @@
         <title>SmartNotes!</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     </head>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="ms-auto">
+            
+            {% if user.is_authenticated %}
+                <a href="{% url 'notes.list' %}" class="btn btn-outline-light m-1">Home</a>
+                <a href="{% url 'notes.new' %}" class="btn btn-outline-light m-1">Create</a>
+                <a href="{% url 'logout' %}" class="btn btn-outline-light m-1">Logout</a>
+            {% else %}
+                <a href="{% url 'signup' %}" class="btn btn-outline-light m-1">Sign Up</a>
+                <a href="{% url 'login' %}" class="btn btn-outline-light m-1">Login</a>
+            {% endif %}
 
+        </div>
+    </nav>
     <body>
         <div class="my-5 text-center container">
             {% block content %}

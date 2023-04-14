@@ -2,5 +2,9 @@
 
 {% block content %}
     <h1>Welcome to Smartnotes</h1>
-    <a href="{% url 'notes.list' %}" class="btn btn-primary">Check out these SmartNotes!</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'notes.list' %}" class="btn btn-primary">Check out these SmartNotes!</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary">Check out these SmartNotes!</a>
+    {% endif %}
 {% endblock %}
